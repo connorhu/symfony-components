@@ -103,6 +103,12 @@ class TwigComponent
     {
         self::$twig->getLoader()->addPath($directory);
     }
+    
+    public static function addFunction($name, $callback, $options = [])
+    {
+        $function = new Twig_SimpleFunction($name, $callback, $options);
+        self::$twig->addFunction($function);
+    }
 }
 
 add_action('plugins_loaded', function () {
